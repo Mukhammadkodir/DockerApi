@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  api: 
+    build: ./api
+    depends_on:
+      - database
+
+  database:
+    image: postgres:latest
+    environment:
+        POSTGRES_DATABASE: newpro
+        POSTGRES_USER: coder
+        POSTGRES_PASSWORD: 123 
+    ports:
+      - "5432:5432" 
