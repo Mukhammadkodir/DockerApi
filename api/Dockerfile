@@ -1,8 +1,8 @@
-FROM golang:1.18rc1-alpine3.15
+FROM golang:1.17-alpine
 RUN mkdir api 
 COPY . /api
 WORKDIR /api
-RUN go mod tidy
+RUN go mod vendor
 RUN go build -o main cmd/main.go
-RUN make do-version
 CMD ./main
+EXPOSE 8080

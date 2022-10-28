@@ -1,16 +1,24 @@
 version: "3.8"
 
 services:
-  api: 
+  api:
+    container_name: api 
     build: ./api
     depends_on:
       - database
+    ports:
+      - "8080:8080"
 
   database:
-    image: postgres:latest
+    container_name: database
+    image: postgres:14.1
     environment:
         POSTGRES_DATABASE: newpro
         POSTGRES_USER: coder
         POSTGRES_PASSWORD: 123 
     ports:
-      - "5432:5432" 
+      - "5433:5433" 
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata: # create the volume for persisting data.

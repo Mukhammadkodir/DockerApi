@@ -11,9 +11,8 @@ import (
 	"github/DockerApi/api/api/docs"
 
 	"github.com/gin-gonic/gin"
-	//"github.com/jmoiron/sqlx"
-	swaggerfiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
+	files "github.com/swaggo/files"
+    "github.com/swaggo/gin-swagger"
 )
 
 // @title 			Test api
@@ -65,7 +64,7 @@ func New(option Option) *gin.Engine {
 	api.PUT("/user", handlerV1.UpdateUser)
 	api.DELETE("/user/:id", handlerV1.DeleteUser)
 
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(files.Handler))
 
 	return router
 }

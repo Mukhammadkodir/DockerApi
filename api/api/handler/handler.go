@@ -5,7 +5,7 @@ import (
 	"github/DockerApi/api/api/models"
 	"github/DockerApi/api/config"
 	"github/DockerApi/api/storage"
-	"github/DockerApi/pkg/logger"
+	"github/DockerApi/api/pkg/logger"
 	"net/http"
 
 	"github.com/jmoiron/sqlx"
