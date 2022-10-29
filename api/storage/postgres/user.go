@@ -83,7 +83,6 @@ func (r *userRepo) Get(in *pb.ById) (*pb.User, error) {
 		&nulldelete,
 	)
 
-	fmt.Println(user.Id,"\n")
 
 	if nullupdate.Valid {
 		user.UpdatedAt = nullupdate.String

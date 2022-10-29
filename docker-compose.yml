@@ -4,6 +4,9 @@ services:
   api:
     container_name: api 
     build: ./api
+    environment:
+      HTTP_PORT: :8080
+      LOG_LEVEL: debug
     depends_on:
       - database
     ports:
@@ -15,10 +18,25 @@ services:
     environment:
         POSTGRES_DATABASE: newpro
         POSTGRES_USER: coder
-        POSTGRES_PASSWORD: 123 
+        POSTGRES_PASSWORD: 123
+    expose:
+      - "5433" 
     ports:
       - "5433:5433" 
     volumes:
       - dbdata:/var/lib/postgresql/data
+    command: -p 5434
+
+  migrate:
+    image: migrate/migrate
+    # networks:
+    #   - new
+    volumes:
+      - ./migrations:/migrations
+    command:
+       ["-path", "/migrations", "-database",  "postgres://postgres:1@database:5434/newpro?sslmode=disable", "up"]
+    links:
+     - database
+
 volumes:
   dbdata: # create the volume for persisting data.

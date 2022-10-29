@@ -9,12 +9,7 @@ import (
 func main() {
 
 	cfg := config.Load()
-	log := logger.New(cfg.LogLevel, "api-gateway")
-
-	// serviceManager, err := services.NewServiceManager(&cfg)
-	// if err != nil {
-	// 	log.Error("gRPC dial error", logger.Error(err))
-	// }
+	log := logger.New(cfg.LogLevel, "api")
 
 	server := api.New(api.Option{
 		Conf:           cfg,
