@@ -20,4 +20,4 @@ create-m:
 	migrate create -ext sql -dir migrations -seq create_user_table
 
 do-version:
-	migrate -source file:./migrations -database 'postgres://coder:123@database:5432/newpro?sslmode=disable' up
+	migrate -source file:./migrations -database 'postgres://coder:123@database:5433/newpro?sslmode=disable' up
